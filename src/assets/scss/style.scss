@@ -1,0 +1,375 @@
+$color: rgb(27, 40, 69);
+
+@mixin theme {
+  background-color: rgb(27, 40, 69);
+  background-image: linear-gradient(
+    315deg,
+    rgb(27, 40, 69) 0%,
+    rgb(39, 64, 96) 74%
+  );
+  color: #fff;
+}
+
+// INPUT START
+select,
+.input-field input,
+.input-field textarea {
+  background: #fff;
+  border: 1px solid #9f9f9f;
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: 1rem;
+  outline: none;
+  padding: 9px 15px;
+  width: 100%;
+}
+
+.input-field input,
+.input-field textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-field input:disabled,
+.input-field textarea:disabled {
+  background-color: #f5f5f5;
+  border: 1px solid #dddddd;
+}
+
+.input-field input[type="radio"],
+.input-field input[type="checkbox"] {
+  width: auto;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+fieldset legend {
+  font-weight: 700;
+}
+
+/**
+ * 3.1 - Input Label
+ */
+
+.input-field {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.input-field label,
+.input-field .ghost {
+  color: #6d7883;
+  font-size: 1rem;
+  font-weight: normal;
+  left: 5px;
+  margin-bottom: 0;
+  margin-left: 9px;
+  margin-top: 0;
+  padding: 0 4px;
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  -webkit-transition: color 0.15s ease, font-size 0.15s ease,
+    -webkit-transform 0.15s ease;
+  transition: color 0.15s ease, font-size 0.15s ease,
+    -webkit-transform 0.15s ease;
+  transition: transform 0.15s ease, color 0.15s ease, font-size 0.15s ease;
+  transition: transform 0.15s ease, color 0.15s ease, font-size 0.15s ease,
+    -webkit-transform 0.15s ease;
+  z-index: 2;
+}
+
+.input-field input ~ .ghost,
+.input-field textarea ~ .ghost {
+  color: transparent;
+  font-size: 0.75rem;
+  font-weight: 700;
+  top: -9px;
+  z-index: 1;
+}
+
+.input-field input ~ .ghost:after,
+.input-field textarea ~ .ghost:after {
+  background-color: #fff;
+  content: "";
+  display: block;
+  height: 4px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 7px;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+  width: 100%;
+  z-index: -1;
+}
+
+.input-field input:focus ~ label,
+.input-field input:valid ~ label,
+.input-field textarea:focus ~ label,
+.input-field textarea:valid ~ label {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.75rem;
+  font-weight: 700;
+  -webkit-transform: translateY(-21px);
+  transform: translateY(-21px);
+}
+
+.input-field input:focus ~ label,
+.input-field textarea:focus ~ label {
+  color: $color;
+}
+
+.input-field input:focus ~ .ghost:after,
+.input-field input:valid ~ .ghost:after,
+.input-field textarea:focus ~ .ghost:after,
+.input-field textarea:valid ~ .ghost:after {
+  opacity: 1;
+}
+
+.input-field input:-webkit-autofill ~ label,
+.input-field textarea:-webkit-autofill ~ label {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.75rem;
+  -webkit-transform: translateY(-21px);
+  transform: translateY(-21px);
+}
+
+.input-field
+  input:-webkit-autofill
+  ~ .ghost:after
+  .input-field
+  textarea:-webkit-autofill
+  ~ .ghost:after {
+  opacity: 1;
+}
+
+.input-field input:focus,
+.input-field textarea:focus,
+.input-field.success-field input:focus,
+.input-field.success-field textarea:focus {
+  border: 2px solid $color;
+}
+
+/**
+ * 3.2 - Input with Icon
+ */
+
+/* Hide nasty ie clear thingie */
+.input-field.with-icon > input::-ms-clear {
+  display: none;
+}
+
+/* General placement stuffs*/
+.input-field.with-icon > i {
+  -webkit-transform: translateY(-90%);
+  -ms-transform: translateY(-90%);
+  transform: translateY(-90%);
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+}
+
+.input-field.with-icon.icon-no-help-text > i {
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* Icon right (default)*/
+.input-field.with-icon i {
+  color: #808080;
+}
+
+.input-field.with-icon > i,
+.input-field.with-icon.icon-right > i {
+  right: 0.7rem;
+}
+.input-field.with-icon > input,
+.input-field.with-icon.icon-right > input {
+  padding-right: 1.7rem;
+}
+
+/* Icon left*/
+.input-field.with-icon.icon-left > i {
+  left: 0.7rem;
+}
+.input-field.with-icon.icon-left > input {
+  padding-left: 2.4rem;
+}
+
+.input-field.with-icon.icon-left label,
+.input-field.with-icon.icon-left .ghost {
+  left: 28px;
+}
+
+.input-field.with-icon.icon-left input:focus ~ label,
+.input-field.with-icon.icon-left input:valid ~ label,
+.input-field.with-icon.icon-left textarea:focus ~ label,
+.input-field.with-icon.icon-left textarea:valid ~ label,
+.input-field.with-icon.icon-left input:focus ~ .ghost,
+.input-field.with-icon.icon-left input:valid ~ .ghost,
+.input-field.with-icon.icon-left textarea:focus ~ .ghost,
+.input-field.with-icon.icon-left textarea:valid ~ .ghost {
+  left: 5px;
+}
+
+/**
+ * 3.3 - Success Input
+ */
+.input-field.success-field input,
+.input-field.success-field textarea {
+  border: 1px solid #28863e;
+}
+
+.input-field.success-field input:valid ~ label,
+.input-field.success-field textarea:valid ~ label,
+.input-field.with-icon.success-field i {
+  color: #28863e;
+}
+
+.input-field.success-field input:focus ~ label,
+.input-field.success-field textarea:focus ~ label {
+  color: $color;
+}
+
+/**
+ * 3.4 - Error Messages
+ * Usually caused by leaving required field blank
+ */
+
+.error-message {
+  color: #db2828;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+.input-field.has-error label,
+.input-field.invalid-entry label,
+.input-field.has-error input:focus ~ label,
+.input-field.invalid-entry input:focus ~ label,
+.input-field.has-error textarea:focus ~ label,
+.input-field.invalid-entry textarea:focus ~ label {
+  color: #db2828;
+}
+
+.has-error input,
+.has-error textarea,
+.invalid-entry input,
+.invalid-entry textarea {
+  border: 1px solid #db2828;
+}
+
+.input-field.has-error input:focus,
+.input-field.has-error textarea:focus,
+.input-field.invalid-entry input:focus,
+.input-field.invalid-entry textarea:focus {
+  border: 2px solid #db2828;
+}
+
+/* Show-Hide either helper text or error message */
+.input-field .error-message {
+  display: none;
+}
+
+.input-field.has-error .error-message,
+.input-field.invalid-entry .error-message {
+  display: block;
+}
+
+.input-field .helper-text {
+  display: block;
+}
+
+.input-field.has-error .helper-text,
+.input-field.invalid-entry .helper-text {
+  display: none;
+}
+
+/**
+ * 3.5 - Invalid Entries
+ * Unlike .error-message - styles input has value but is invalid
+ */
+
+.input-field.invalid-entry label {
+  color: transparent;
+}
+
+.input-field.invalid-entry input ~ .ghost,
+.input-field.invalid-entry textarea ~ .ghost {
+  background: #fff;
+  color: #db2828;
+  font-size: 0.75rem;
+  top: -9px;
+  z-index: 2;
+}
+
+.file-input__input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-input__label {
+  cursor: pointer;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 12px;
+  @include theme;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid $color;
+
+  &:hover {
+    background: #fff;
+    color: $color;
+  }
+
+  span {
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+}
+
+.file-input__label svg {
+  height: 16px;
+  margin-right: 4px;
+}
+
+// INPUT ENDS
+
+.theme_btn {
+  @include theme;
+  color: #fff;
+  border-radius: 3px;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+
+  &:hover {
+    background-color: #fff;
+    background-image: none;
+    color: $color;
+    border: 1px solid $color;
+  }
+}
